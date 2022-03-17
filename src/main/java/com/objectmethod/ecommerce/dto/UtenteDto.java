@@ -12,7 +12,7 @@ public class UtenteDto {
 	private String password;
 	private Boolean amministratore;
 	private Long idIndirizzo;
-	
+	private Long idCarrello;
 	
 	
 	

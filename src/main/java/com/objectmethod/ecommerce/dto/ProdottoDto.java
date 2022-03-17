@@ -9,6 +9,7 @@ public class ProdottoDto {
 	private Double peso;
 	private Integer quantita;
 	private String codice;
-	private Long idcarrello;
+	private Double prezzo;
+	private Long idCarrello;
 	
 }

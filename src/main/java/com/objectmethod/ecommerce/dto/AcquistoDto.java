@@ -1,5 +1,14 @@
 package com.objectmethod.ecommerce.dto;
 
-public class AcquistoDto {
+import java.util.Date;
 
+import lombok.Data;
+
+
+@Data
+public class AcquistoDto {
+	private Long id;
+	private Date data;
+	private Long idCarrello;
+	private Long idUtente;
 }
