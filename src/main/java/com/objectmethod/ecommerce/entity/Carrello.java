@@ -26,6 +26,9 @@ public class Carrello {
 	@JoinColumn(name ="id_prodotto")
 	private List<Prodotto> prodotti;
 	
+	@Column(name = "prezzo")
+	private Double prezzo;
+	
 	@JoinColumn(name ="id_utente")
 	private Utente utente;
 

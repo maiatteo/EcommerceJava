@@ -29,6 +29,8 @@ public class Prodotto {
 	private Integer quantita;
 	@Column(name="codice")
 	private String codice;
+	@Column(name="prezzo")
+	private Double prezzo;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name ="id_carrello")
 	private Carrello carrello;
