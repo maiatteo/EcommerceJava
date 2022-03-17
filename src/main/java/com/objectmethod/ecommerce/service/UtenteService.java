@@ -8,10 +8,14 @@ import org.springframework.stereotype.Service;
 
 import com.objectmethod.ecommerce.dto.UtenteDto;
 import com.objectmethod.ecommerce.entity.Utente;
+import com.objectmethod.ecommerce.mapper.UtenteMapper;
 import com.objectmethod.ecommerce.repository.UtenteRepository;
 
 @Service
 public class UtenteService {
+	
+	@Autowired
+	UtenteMapper utenteMapper;
 	
 	@Autowired
 	UtenteRepository utenteRepo;

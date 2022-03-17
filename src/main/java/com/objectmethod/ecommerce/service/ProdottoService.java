@@ -6,9 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.objectmethod.ecommerce.dto.ProdottoDto;
 import com.objectmethod.ecommerce.entity.Prodotto;
+import com.objectmethod.ecommerce.mapper.ProdottoMapper;
 import com.objectmethod.ecommerce.repository.ProdottoRepository;
 
 public class ProdottoService {
+	
+	@Autowired
+	ProdottoMapper prodottoMapper;
 
 	@Autowired
 	ProdottoRepository prodottoRepo;

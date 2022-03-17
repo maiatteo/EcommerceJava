@@ -7,7 +7,7 @@ import com.objectmethod.ecommerce.dto.ProdottoDto;
 import com.objectmethod.ecommerce.entity.Prodotto;
 
 @Mapper(componentModel = "spring")
-public abstract class ProdottiMapper {
+public abstract class ProdottoMapper {
 	
 	
 	@Mapping(target= "idCarrello", source ="carrello.id")

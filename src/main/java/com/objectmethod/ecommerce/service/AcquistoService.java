@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.objectmethod.ecommerce.dto.AcquistoDto;
 import com.objectmethod.ecommerce.entity.Acquisto;
+import com.objectmethod.ecommerce.mapper.AcquistoMapper;
 import com.objectmethod.ecommerce.repository.AcquistoRepository;
 
 public class AcquistoService {
 
 	@Autowired
 	AcquistoRepository acquistoRepo;
+	
+	@Autowired
+	AcquistoMapper acquistoMapper;
 	
 	public List<AcquistoDto> findAll(){
 		List<Acquisto> lst = acquistoRepo.findAll();
