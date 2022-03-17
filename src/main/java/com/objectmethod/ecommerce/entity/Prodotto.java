@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import lombok.Data;
 @Entity
 @Data
-@Table(name="prodotti")
+@Table(name="e_prodotti")
 public class Prodotto {
 
 
@@ -30,7 +30,7 @@ public class Prodotto {
 	@Column(name="codice")
 	private String codice;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="idcarrello")
+	@JoinColumn(name ="id_arrello")
 	private Carrello carrello;
 	
 	

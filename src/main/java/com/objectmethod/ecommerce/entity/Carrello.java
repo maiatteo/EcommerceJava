@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="carrelli")
+@Table(name="e_carrelli")
 public class Carrello {
 	
 	@Id
@@ -25,9 +25,6 @@ public class Carrello {
 	@OneToMany
 	@JoinColumn(name ="id_prodotto")
 	private List<Prodotto> prodotti;
-	
-	@Column(name = "quantita")
-	private Long quantita;
 	
 	@JoinColumn(name ="id_utente")
 	private Utente utente;
