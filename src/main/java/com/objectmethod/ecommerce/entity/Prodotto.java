@@ -30,7 +30,7 @@ public class Prodotto {
 	@Column(name="codice")
 	private String codice;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="id_arrello")
+	@JoinColumn(name ="id_carrello")
 	private Carrello carrello;
 	
 	
