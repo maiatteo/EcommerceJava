@@ -38,12 +38,12 @@ public class Utente {
 	private Boolean amministratore;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="idadress")
-	private Indirizzo indirizzo;
+	@JoinColumn(name ="id_indirizzo")
+	private Indirizzo indirizzoUte;
 	
 	@OneToOne
 	@JoinColumn(name ="idcarrello")
-	private Carello carello;
+	private Carrello carrello;
 	
 	@OneToMany
 	@JoinColumn(name ="idacquisto")
