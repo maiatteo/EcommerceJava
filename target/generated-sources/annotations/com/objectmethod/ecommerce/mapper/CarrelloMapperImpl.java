@@ -3,12 +3,14 @@ package com.objectmethod.ecommerce.mapper;
 import com.objectmethod.ecommerce.dto.CarrelloDto;
 import com.objectmethod.ecommerce.entity.Carrello;
 import com.objectmethod.ecommerce.entity.Utente;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-03-17T16:45:10+0100",
+    date = "2022-03-17T17:04:59+0100",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 1.8.0_291 (Oracle Corporation)"
 )
 @Component
@@ -40,6 +42,20 @@ public class CarrelloMapperImpl extends CarrelloMapper {
         carrello.setId( dto.getId() );
 
         return carrello;
+    }
+
+    @Override
+    public List<CarrelloDto> toDto(List<Carrello> lst) {
+        if ( lst == null ) {
+            return null;
+        }
+
+        List<CarrelloDto> list = new ArrayList<CarrelloDto>( lst.size() );
+        for ( Carrello carrello : lst ) {
+            list.add( toDto( carrello ) );
+        }
+
+        return list;
     }
 
     private Long entityUtenteId(Carrello carrello) {

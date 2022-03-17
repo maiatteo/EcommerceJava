@@ -1,5 +1,7 @@
 package com.objectmethod.ecommerce.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -15,4 +17,6 @@ public abstract class ProdottoMapper {
 	
 	@Mapping(target= "carrello.id", source ="idCarrello")
 	public abstract Prodotto toModel(ProdottoDto dto);
+
+	public abstract List<ProdottoDto> toDto(List<Prodotto> lst);
 }

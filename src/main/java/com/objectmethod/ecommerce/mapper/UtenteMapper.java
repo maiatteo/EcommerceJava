@@ -1,5 +1,7 @@
 package com.objectmethod.ecommerce.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -15,4 +17,6 @@ public abstract class UtenteMapper {
 	@Mapping(target= "carrello.id", source ="idCarrello")
 	@Mapping(target= "indirizzoUte.id", source ="idIndirizzo")
 	public abstract Utente toModel(UtenteDto dto);
+
+	public abstract List<UtenteDto> toDto(List<Utente> lst);
 }

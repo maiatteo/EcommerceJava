@@ -1,5 +1,7 @@
 package com.objectmethod.ecommerce.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -13,4 +15,7 @@ public abstract class NegozioMapper {
 	
 	@Mapping(target= "indirizzoNeg.id", source ="idIndirizzo")
 	public abstract Negozio toModel(NegozioDto dto);
+
+	@Mapping(target= "indirizzoNeg.id", source ="idIndirizzo")
+	public abstract List<NegozioDto> toDto(List<Negozio> lst);
 }
