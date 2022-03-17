@@ -42,7 +42,7 @@ public class Utente {
 	private Indirizzo indirizzoUte;
 	
 	@OneToOne
-	@JoinColumn(name ="idcarrello")
+	@JoinColumn(name ="id_carrello")
 	private Carrello carrello;
 	
 	@OneToMany

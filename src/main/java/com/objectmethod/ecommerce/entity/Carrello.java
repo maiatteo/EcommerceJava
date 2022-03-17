@@ -24,8 +24,7 @@ public class Carrello {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name ="id_prodotto")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "carrello")
 	private List<Prodotto> prodotti;
 	
 	@Column(name = "prezzo")
