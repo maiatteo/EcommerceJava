@@ -24,7 +24,7 @@ public class Carrello {
 	
 	@OneToMany
 	@JoinColumn(name ="id_prodotto")
-	private List<Prodotti> prodotti;
+	private List<Prodotto> prodotti;
 	
 	@Column(name = "quantita")
 	private Long quantita;
