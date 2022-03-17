@@ -17,6 +17,9 @@ public class CarrelloService {
 	@Autowired
 	CarrelloRepository carrelloRepo;
 	
+	@Autowired
+	CarrelloMapper carrelloMapper;
+	
 	public List<CarrelloDto> findAll(){
 		List<Carrello> lst = carrelloRepo.findAll();
 		List<CarrelloDto> dto = carrelloMapper.toDto(lst);
