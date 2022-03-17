@@ -33,6 +33,6 @@ public class Negozio {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_indirizzo")
 	private Indirizzo indirizzoNeg;
-	
+	//h
 
 }
