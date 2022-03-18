@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.objectmethod.ecommerce.dto.IndirizzoDto;
 import com.objectmethod.ecommerce.dto.UtenteDto;
+import com.objectmethod.ecommerce.dto.utils.DoubleGeneric;
+import com.objectmethod.ecommerce.dto.utils.UtenteConIndirizzoDto;
 import com.objectmethod.ecommerce.dto.utils.UtenteTokenDto;
 import com.objectmethod.ecommerce.service.UtenteService;
 import com.objectmethod.ecommerce.utils.ResponseWrapper;
@@ -30,8 +33,9 @@ public class UtenteController {
 		return utenteServ.findAll();
 	}
 	@PutMapping("/registrati")
-	public ResponseWrapper<UtenteDto> registrati(@RequestBody UtenteDto utente) {
-		return utenteServ.registrazione(utente);
+	public ResponseWrapper<UtenteDto> registrati(@RequestBody UtenteConIndirizzoDto body) {
+		log.debug("sium",body);
+		return utenteServ.registrazione(body);
 	}
 	
 	@PostMapping("/login")
