@@ -6,6 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import com.objectmethod.ecommerce.dto.UtenteDto;
+import com.objectmethod.ecommerce.dto.utils.UtenteTokenDto;
 import com.objectmethod.ecommerce.entity.Utente;
 
 @Mapper(componentModel = "spring")
@@ -18,5 +19,8 @@ public abstract class UtenteMapper {
 	@Mapping(target= "indirizzoUte.id", source ="idIndirizzo")
 	public abstract Utente toModel(UtenteDto dto);
 
+	
 	public abstract List<UtenteDto> toDto(List<Utente> lst);
+	
+	public abstract UtenteTokenDto toDto(Utente entity,String token);
 }

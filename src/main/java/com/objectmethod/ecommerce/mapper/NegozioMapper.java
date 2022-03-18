@@ -19,3 +19,4 @@ public abstract class NegozioMapper {
 	@Mapping(target= "indirizzoNeg.id", source ="idIndirizzo")
 	public abstract List<NegozioDto> toDto(List<Negozio> lst);
 }
+//ciao
