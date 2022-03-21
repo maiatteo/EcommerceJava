@@ -25,9 +25,6 @@ public class Carrello {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "carrello")
-	private List<Prodotto> prodotti;
-	
 	@Column(name = "prezzo")
 	private Double prezzo;
 	
@@ -37,4 +34,5 @@ public class Carrello {
 
 	@OneToOne(mappedBy ="carrello")
 	private Acquisto acquisto;
+
 }
