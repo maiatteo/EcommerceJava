@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.objectmethod.ecommerce.dto.ProdottoDto;
 import com.objectmethod.ecommerce.entity.Prodotto;
@@ -11,6 +12,7 @@ import com.objectmethod.ecommerce.mapper.ProdottoMapper;
 import com.objectmethod.ecommerce.repository.ProdottoRepository;
 import com.objectmethod.ecommerce.utils.ResponseWrapper;
 
+@Service
 public class ProdottoService {
 	
 	@Autowired
