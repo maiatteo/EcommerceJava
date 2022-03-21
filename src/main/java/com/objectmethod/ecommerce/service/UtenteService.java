@@ -21,6 +21,9 @@ import com.objectmethod.ecommerce.utils.ResponseWrapper;
 public class UtenteService {
 
 	@Autowired
+	CarrelloService carrello;
+	
+	@Autowired
 	IndirizzoService indirizzo;
 
 	@Autowired
@@ -68,7 +71,9 @@ public class UtenteService {
 		}
 		utenteRepo.registrati(entity.getNome(), entity.getCognome(),
 				entity.getEmail(), entity.getUsername(), entity.getPassword(),creazione.getBody().getId());
+		entity=utenteRepo.getByUsername(entity.getUsername()).get();
 		resp.setBody(utenteMapper.toDto(utenteRepo.getByUsername(entity.getUsername()).get()));
+		carrello.creaCarrello(utenteMapper.toDto(entity));
 		resp.setError(error);
 		return resp;
 	}
