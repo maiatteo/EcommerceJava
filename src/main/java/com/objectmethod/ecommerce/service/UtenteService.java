@@ -22,7 +22,7 @@ public class UtenteService {
 
 	@Autowired
 	IndirizzoService indirizzo;
-	
+
 	@Autowired
 	UtenteMapper utenteMapper;
 
@@ -40,32 +40,35 @@ public class UtenteService {
 	public ResponseWrapper<UtenteDto> registrazione(UtenteConIndirizzoDto utente){
 		ResponseWrapper<UtenteDto> resp= new ResponseWrapper<>();
 		List<String> error=new ArrayList<String>();
-			if(utente !=null) {
-			Utente entity = utenteMapper.toModel(utente);
-			if(entity.getNome()!=null ||
-					entity.getCognome()!=null||
-					entity.getEmail()!=null||
-					entity.getUsername()!=null||
-					entity.getPassword()!=null) {
-				if(!utenteRepo.getByEmail(entity.getEmail()).isPresent()&&
-						!utenteRepo.getByUsername(entity.getUsername()).isPresent()) {
-					ResponseWrapper<IndirizzoDto> creazione=indirizzo.crea(utente);
-					if(creazione.getBody()==null) {
-						resp.setError(creazione.getError());
-						return resp;
-					}
-				utenteRepo.registrati(entity.getNome(), entity.getCognome(),
-						entity.getEmail(), entity.getUsername(), entity.getPassword(),creazione.getBody().getId());
-				resp.setBody(utenteMapper.toDto(utenteRepo.getByUsername(entity.getUsername()).get()));
-				}else {
-					error.add("username o email gia esistenti");
-				}
-			}else {
-				error.add("campo mancante");
-			}
-		}else {
+		if(utente ==null) {
 			error.add("utente nullo");
+			resp.setError(error);
+			return resp;
 		}
+		Utente entity = utenteMapper.toModel(utente);
+		if(entity.getNome()==null ||
+				entity.getCognome()==null||
+				entity.getEmail()==null||
+				entity.getUsername()==null||
+				entity.getPassword()==null) {
+			error.add("campo mancante");
+			resp.setError(error);
+			return resp;
+		}
+		if(utenteRepo.getByEmail(entity.getEmail()).isPresent()&&
+				utenteRepo.getByUsername(entity.getUsername()).isPresent()) {
+			error.add("username o email gia esistenti");
+			resp.setError(error);
+			return resp;
+		}
+		ResponseWrapper<IndirizzoDto> creazione=indirizzo.crea(utente);
+		if(creazione.getBody()==null) {
+			resp.setError(creazione.getError());
+			return resp;
+		}
+		utenteRepo.registrati(entity.getNome(), entity.getCognome(),
+				entity.getEmail(), entity.getUsername(), entity.getPassword(),creazione.getBody().getId());
+		resp.setBody(utenteMapper.toDto(utenteRepo.getByUsername(entity.getUsername()).get()));
 		resp.setError(error);
 		return resp;
 	}
@@ -78,12 +81,12 @@ public class UtenteService {
 			resp.setError(error);
 			return resp;
 		}
-			String token = jwt.createJWTToken(utenteMapper.toDto(user.get()));
-			resp.setBody(utenteMapper.toDto(user.get(),token));
-			resp.setError(error);
+		String token = jwt.createJWTToken(utenteMapper.toDto(user.get()));
+		resp.setBody(utenteMapper.toDto(user.get(),token));
+		resp.setError(error);
 		return resp;
 	}
-	
+
 	public ResponseWrapper<UtenteDto> getOne(Long id){
 		ResponseWrapper<UtenteDto> resp=new ResponseWrapper<>() ;
 		List<String> error= new ArrayList<String>();
