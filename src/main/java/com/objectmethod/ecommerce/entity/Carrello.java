@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -28,7 +29,7 @@ public class Carrello {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "carrello")
 	private List<Prodotto> prodotti;
 	
-	@Column(name = "prezzo")
+	@Transient
 	private Double prezzo;
 	
 	@OneToOne(mappedBy ="carrello")
