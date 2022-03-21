@@ -36,4 +36,11 @@ public class AcquistoService {
 		
 	}
 	
+	public List<AcquistoDto> findByIdUtente(Long idUtente){
+		List<Acquisto> lst = acquistoRepo.findByIdUtente(idUtente);
+		List<AcquistoDto> dto = acquistoMapper.toDto(lst);
+		return dto;
+		
+	}
+	
 }
