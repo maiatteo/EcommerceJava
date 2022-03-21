@@ -4,12 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.objectmethod.ecommerce.dto.CarrelloDto;
 import com.objectmethod.ecommerce.entity.Carrello;
 import com.objectmethod.ecommerce.mapper.CarrelloMapper;
 import com.objectmethod.ecommerce.repository.CarrelloRepository;
-
+@Service
 public class CarrelloService {
 	
 	@Autowired

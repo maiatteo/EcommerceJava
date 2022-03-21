@@ -4,12 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.objectmethod.ecommerce.dto.AcquistoDto;
 import com.objectmethod.ecommerce.entity.Acquisto;
 import com.objectmethod.ecommerce.mapper.AcquistoMapper;
 import com.objectmethod.ecommerce.repository.AcquistoRepository;
-
+@Service
 public class AcquistoService {
 
 	@Autowired

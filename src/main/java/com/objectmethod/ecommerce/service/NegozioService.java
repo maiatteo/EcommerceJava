@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.objectmethod.ecommerce.dto.NegozioDto;
 import com.objectmethod.ecommerce.entity.Negozio;
 import com.objectmethod.ecommerce.mapper.NegozioMapper;
 import com.objectmethod.ecommerce.repository.NegozioRepository;
 import com.objectmethod.ecommerce.utils.ResponseWrapper;
-
+@Service
 public class NegozioService {
 	
 	@Autowired
@@ -34,7 +35,7 @@ public class NegozioService {
 		return ResponseEntity.ok(new ResponseWrapper<NegozioDto>(negozioConCodice));
 		}
 	public ResponseEntity<?> FindById(Long id) {
-		
+		if( !negozioRepo.findById(id).isPresent()) {return  ResponseEntity.ok(new ResponseWrapper<String>("non c'è id"));}
 		NegozioDto negozioConId = negozioMapper.toDto(negozioRepo.findById(id).get());
 		if(negozioConId == null) {
 			return (ResponseEntity<?>) ResponseEntity.badRequest();
