@@ -10,6 +10,7 @@ import com.objectmethod.ecommerce.dto.AcquistoDto;
 import com.objectmethod.ecommerce.entity.Acquisto;
 import com.objectmethod.ecommerce.mapper.AcquistoMapper;
 import com.objectmethod.ecommerce.repository.AcquistoRepository;
+
 @Service
 public class AcquistoService {
 
@@ -34,6 +35,13 @@ public class AcquistoService {
 		else {
 			return null;
 		}
+		
+	}
+	
+	public List<AcquistoDto> findByIdUtente(Long idUtente){
+		List<Acquisto> lst = acquistoRepo.findByIdUtente(idUtente);
+		List<AcquistoDto> dto = acquistoMapper.toDto(lst);
+		return dto;
 		
 	}
 	
