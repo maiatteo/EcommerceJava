@@ -50,8 +50,8 @@ public class UtenteService {
 				if(!utenteRepo.getByEmail(entity.getEmail()).isPresent()&&
 						!utenteRepo.getByUsername(entity.getUsername()).isPresent()) {
 					ResponseWrapper<IndirizzoDto> creazione=indirizzo.crea(utente);
-					List<String> e=creazione.getError();if(creazione.getBody()==null) {
-						resp.setError(e);
+					if(creazione.getBody()==null) {
+						resp.setError(creazione.getError());
 						return resp;
 					}
 				utenteRepo.registrati(entity.getNome(), entity.getCognome(),
