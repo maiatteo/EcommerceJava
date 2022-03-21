@@ -83,5 +83,28 @@ public class UtenteService {
 			resp.setError(error);
 		return resp;
 	}
-
+	
+	public ResponseWrapper<UtenteDto> getOne(Long id){
+		ResponseWrapper<UtenteDto> resp=new ResponseWrapper<>() ;
+		List<String> error= new ArrayList<String>();
+		if(id==null) {
+			error.add("id non presente");
+			resp.setError(error);
+		}
+		Utente entity =utenteRepo.getById(id);
+		if(entity==null) {
+			error.add("utente non presente");
+			resp.setError(error);
+		}
+		resp.setBody(utenteMapper.toDto(entity));
+		resp.setError(error);
+		return resp;
+	}
+	public String delect(Long id) {
+		if(id==null) {
+			return "id nullo";
+		}
+		utenteRepo.deleteById(id);
+		return "cancellazione avvenuta";
+	}
 }

@@ -3,13 +3,16 @@ package com.objectmethod.ecommerce.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.objectmethod.ecommerce.dto.ProdottoDto;
 import com.objectmethod.ecommerce.dto.UtenteDto;
 import com.objectmethod.ecommerce.dto.utils.UtenteConIndirizzoDto;
 import com.objectmethod.ecommerce.dto.utils.UtenteTokenDto;
@@ -40,5 +43,15 @@ public class UtenteController {
 	public ResponseWrapper<UtenteTokenDto> login(@RequestBody UtenteDto utente){
 		return utenteServ.login(utente);
 	}
+	
+	@GetMapping("/{id}")
+	public ResponseWrapper<UtenteDto> getOne(@PathVariable Long id) {
+		return utenteServ.getOne(id);
+	}
+	@DeleteMapping("/{id}")
+	public String  delete(@PathVariable Long id) {
+		return utenteServ.delect(id);
+	}
+	
 	
 }
