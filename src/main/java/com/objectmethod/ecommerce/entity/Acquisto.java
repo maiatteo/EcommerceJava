@@ -3,6 +3,7 @@ package com.objectmethod.ecommerce.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,18 +18,25 @@ import lombok.Data;
 
 
 @Entity
-@Table(name="acquisto")
+@Table(name="e_acquisti")
 @Data
 public class Acquisto {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(name = "data")
 	private Date data;
+	
 	@OneToOne
+	@JoinColumn(name ="id_carrello")
 	private Carrello carrello;
 	
+	@Column(name="prezzo")
 	private Double prezzo;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="idutente")
+	@JoinColumn(name ="id_utente")
 	private Utente utente;
 }

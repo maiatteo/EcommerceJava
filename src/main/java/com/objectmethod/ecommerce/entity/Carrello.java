@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -30,8 +31,10 @@ public class Carrello {
 	@Column(name = "prezzo")
 	private Double prezzo;
 	
-	@ManyToOne
+	@OneToOne(mappedBy ="carrello")
 	@JoinColumn(name ="id_utente")
 	private Utente utente;
 
+	@OneToOne(mappedBy ="carrello")
+	private Acquisto acquisto;
 }
