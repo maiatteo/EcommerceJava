@@ -13,7 +13,7 @@ public abstract class ProdottoMapper {
 	
 	
 	@Mapping(target= "idCarrello", source ="carrello.id")
-	public abstract ProdottoDto toModel(Prodotto entity);
+	public abstract ProdottoDto toDto(Prodotto entity);
 	
 	@Mapping(target= "carrello.id", source ="idCarrello")
 	public abstract Prodotto toModel(ProdottoDto dto);
