@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.objectmethod.ecommerce.dto.IndirizzoDto;
 import com.objectmethod.ecommerce.dto.UtenteDto;
-import com.objectmethod.ecommerce.dto.utils.DoubleGeneric;
 import com.objectmethod.ecommerce.dto.utils.UtenteConIndirizzoDto;
 import com.objectmethod.ecommerce.dto.utils.UtenteTokenDto;
 import com.objectmethod.ecommerce.service.UtenteService;
