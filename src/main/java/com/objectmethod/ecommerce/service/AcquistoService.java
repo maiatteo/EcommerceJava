@@ -57,5 +57,9 @@ public class AcquistoService {
 		acquistoRepo.aggiungiAcquisto(carrelloMapp.toModel(dto).getId(), carrelloMapp.toModel(dto).getPrezzo());
 		return null;
 	}
+	@Transactional
+	public void cancellaAcquisti(Long id) {
+		acquistoRepo.cancellaAcquisti(id);
+	}
 	
 }

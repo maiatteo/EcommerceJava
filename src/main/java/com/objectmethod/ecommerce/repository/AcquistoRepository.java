@@ -19,4 +19,8 @@ public interface AcquistoRepository  extends JpaRepository<Acquisto, Long>{
 	@Modifying
 	@Query(value="INSERT INTO e_acquisti (id_carrello,prezzo) VALUES(?1,?2)", nativeQuery=true)
 	void aggiungiAcquisto(Long idCarrello, Double prezzo);
+	@Modifying
+	@Query(nativeQuery = true, value="DELETE  FROM e_acquisti WHERE id =?1")
+	void cancellaAcquisti(Long id);
+	
 }
