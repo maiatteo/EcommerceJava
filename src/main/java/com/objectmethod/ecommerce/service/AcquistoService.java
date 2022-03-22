@@ -3,17 +3,25 @@ package com.objectmethod.ecommerce.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.objectmethod.ecommerce.dto.AcquistoDto;
+import com.objectmethod.ecommerce.dto.CarrelloDto;
 import com.objectmethod.ecommerce.entity.Acquisto;
 import com.objectmethod.ecommerce.mapper.AcquistoMapper;
+import com.objectmethod.ecommerce.mapper.CarrelloMapper;
 import com.objectmethod.ecommerce.repository.AcquistoRepository;
+import com.objectmethod.ecommerce.repository.CarrelloRepository;
 
 @Service
 public class AcquistoService {
-
+	@Autowired
+	CarrelloMapper carrelloMapp;
+	@Autowired
+	CarrelloRepository carrelloRepo;
 	@Autowired
 	AcquistoRepository acquistoRepo;
 	
@@ -43,6 +51,11 @@ public class AcquistoService {
 		List<AcquistoDto> dto = acquistoMapper.toDto(lst);
 		return dto;
 		
+	}
+	@Transactional
+	public AcquistoDto aggiungiAcquisto(CarrelloDto dto) {
+		acquistoRepo.aggiungiAcquisto(carrelloMapp.toModel(dto).getId(), carrelloMapp.toModel(dto).getPrezzo());
+		return null;
 	}
 	
 }

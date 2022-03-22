@@ -84,4 +84,5 @@ public class ProdottoService {
 	public void aggiungiAlCarrello(Long idProdotto, CarrelloDto carrello, Integer quantita) {
 		prodottoRepo.aggiungiAlCarrello(idProdotto, carrelloMapper.toModel(carrello).getId() , quantita);
 	}
+	
 }
