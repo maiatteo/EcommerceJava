@@ -17,7 +17,7 @@ public abstract class CarrelloMapper {
 	@Mapping(target= "utente.id", source ="idUtente")
 	public abstract Carrello toModel(CarrelloDto dto);
 
-	@Mapping(target= "utente.id", source ="idUtente")
+	@Mapping(target= "idUtente", source ="utente.id")
 	public abstract List<CarrelloDto> toDto(List<Carrello> lst) ;
 }
 	

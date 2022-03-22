@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -25,14 +26,14 @@ public class Carrello {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "prezzo")
+	@Transient
 	private Double prezzo;
 	
 	@OneToOne(mappedBy ="carrello")
 	@JoinColumn(name ="id_utente")
 	private Utente utente;
 
-	@OneToOne(mappedBy ="carrello")
-	private Acquisto acquisto;
+	//@OneToOne(mappedBy ="carrello")
+	//private Acquisto acquisto;
 
 }

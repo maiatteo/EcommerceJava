@@ -3,6 +3,8 @@ package com.objectmethod.ecommerce.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -38,11 +40,12 @@ public class CarrelloService {
 		return dto;
 	}
 	
+	@Transactional
 	public CarrelloDto creaCarrello(UtenteDto uDto) {
-		Carrello carrello = new Carrello();
-		carrello.setUtente(utenteMapper.toModel(uDto));
-		carrelloRepo.save(carrello);
-		return carrelloMapper.toDto(carrello);
+		//Carrello carrello = new Carrello();
+		//carrello.setUtente(utenteMapper.toModel(uDto));
+		carrelloRepo.creaCarrello(uDto.getId());
+		return findByIdUtente(uDto.getId());
 	}
 
 }

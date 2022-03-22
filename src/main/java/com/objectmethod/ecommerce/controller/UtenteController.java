@@ -16,6 +16,7 @@ import com.objectmethod.ecommerce.dto.ProdottoDto;
 import com.objectmethod.ecommerce.dto.UtenteDto;
 import com.objectmethod.ecommerce.dto.utils.UtenteConIndirizzoDto;
 import com.objectmethod.ecommerce.dto.utils.UtenteTokenDto;
+import com.objectmethod.ecommerce.service.CarrelloService;
 import com.objectmethod.ecommerce.service.UtenteService;
 import com.objectmethod.ecommerce.utils.ResponseWrapper;
 
@@ -28,6 +29,9 @@ public class UtenteController {
 
 	@Autowired
 	UtenteService utenteServ;
+	
+	@Autowired
+	CarrelloService carrelloService;
 
 	@GetMapping("/all")
 	public List<UtenteDto> getAll() {
@@ -53,5 +57,9 @@ public class UtenteController {
 		return utenteServ.delect(id);
 	}
 	
+	@PostMapping("carrello")
+	public void carrello(@RequestBody UtenteDto dto) {
+		carrelloService.creaCarrello(dto);
+	}
 	
 }
