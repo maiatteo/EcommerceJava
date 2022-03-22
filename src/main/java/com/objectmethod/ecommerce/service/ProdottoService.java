@@ -3,11 +3,15 @@ package com.objectmethod.ecommerce.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.objectmethod.ecommerce.dto.CarrelloDto;
 import com.objectmethod.ecommerce.dto.ProdottoDto;
 import com.objectmethod.ecommerce.entity.Prodotto;
+import com.objectmethod.ecommerce.mapper.CarrelloMapper;
 import com.objectmethod.ecommerce.mapper.ProdottoMapper;
 import com.objectmethod.ecommerce.repository.ProdottoRepository;
 import com.objectmethod.ecommerce.utils.ResponseWrapper;
@@ -17,6 +21,9 @@ public class ProdottoService {
 	@Autowired
 	ProdottoMapper prodottoMapper;
 
+	@Autowired
+	CarrelloMapper carrelloMapper;
+	
 	@Autowired
 	ProdottoRepository prodottoRepo;
 
@@ -69,5 +76,12 @@ public class ProdottoService {
 		}
 		prodottoRepo.deleteById(id);
 		return "cancellazione avvenuta";
+	}
+	
+	
+	//AGGIUNGI TOKEN
+	@Transactional
+	public void aggiungiAlCarrello(Long idProdotto, CarrelloDto carrello, Integer quantita) {
+		prodottoRepo.aggiungiAlCarrello(idProdotto, carrelloMapper.toModel(carrello).getId() , quantita);
 	}
 }
