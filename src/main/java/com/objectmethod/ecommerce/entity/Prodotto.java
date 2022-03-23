@@ -33,11 +33,7 @@ public class Prodotto {
 	@Column(name="codice")
 	private String codice;
 	@Column(name="prezzo")
-	private Double prezzo;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="id_carrello")
-	private Carrello carrello;
-	
+	private Double prezzo;	
 	@ManyToMany(mappedBy = "prodotti")
     private List<Carrello> carrelli;
 }

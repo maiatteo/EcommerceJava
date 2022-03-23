@@ -12,10 +12,8 @@ import com.objectmethod.ecommerce.entity.Prodotto;
 public abstract class ProdottoMapper {
 	
 	
-	@Mapping(target= "idCarrello", source ="carrello.id")
 	public abstract ProdottoDto toDto(Prodotto entity);
 	
-	@Mapping(target= "carrello.id", source ="idCarrello")
 	public abstract Prodotto toModel(ProdottoDto dto);
 
 	public abstract List<ProdottoDto> toDto(List<Prodotto> lst);
