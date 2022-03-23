@@ -27,4 +27,8 @@ public interface UtenteRepository extends JpaRepository<Utente, Long>{
 	
 	@Query(value ="select * from e_utenti where email = :email",nativeQuery=true)
 	public Optional<Utente> getByEmail(String email);
+	
+	@Modifying
+	@Query(value = "UPDATE e_utenti SET id_carrello = ?1 WHERE username = ?2", nativeQuery = true)
+	public void setCarrello(Long id, String username);
 }

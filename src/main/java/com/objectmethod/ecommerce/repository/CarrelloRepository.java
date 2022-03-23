@@ -20,5 +20,7 @@ public interface CarrelloRepository extends JpaRepository<Carrello, Long>{
 	@Query(value = "insert into e_carrelli(id_utente) values (?1)",nativeQuery=true)
 	public void creaCarrello(Long idUtente);
 	
+	@Query(value="SELECT id FROM e_carrelli WHERE id_utente = ?1 ORDER BY id DESC LIMIT 1", nativeQuery = true)
+	public Long getLastCarrello(Long idUtente);
 
 }

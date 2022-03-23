@@ -15,8 +15,12 @@ import com.objectmethod.ecommerce.entity.Carrello;
 import com.objectmethod.ecommerce.mapper.CarrelloMapper;
 import com.objectmethod.ecommerce.mapper.UtenteMapper;
 import com.objectmethod.ecommerce.repository.CarrelloRepository;
+import com.objectmethod.ecommerce.repository.UtenteRepository;
 @Service
 public class CarrelloService {
+	
+	@Autowired
+	UtenteRepository utenteRepo;
 	
 	@Autowired
 	UtenteMapper utenteMapper;
@@ -45,8 +49,9 @@ public class CarrelloService {
 		//Carrello carrello = new Carrello();
 		//carrello.setUtente(utenteMapper.toModel(uDto));
 		carrelloRepo.creaCarrello(uDto.getId());
+		Long idUtente = carrelloRepo.getLastCarrello(uDto.getId());
+		utenteRepo.setCarrello(idUtente, uDto.getUsername());
 		return findByIdUtente(uDto.getId());
 	}
-	
 
 }
