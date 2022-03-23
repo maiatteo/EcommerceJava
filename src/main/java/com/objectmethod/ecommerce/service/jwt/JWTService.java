@@ -18,7 +18,7 @@ public class JWTService {
 	private static final String EMAIL = "email";
 	private static final String ID = "Id";
 	private static final String Admin = "amministratore";
-	@Value("JWT_SECRET_KEY")
+	@Value("${JWT_SIUM}")
 	private String secret;
 	
 	public String createJWTToken(UtenteDto user) {

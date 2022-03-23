@@ -10,11 +10,14 @@ import org.springframework.stereotype.Service;
 
 import com.objectmethod.ecommerce.dto.AcquistoDto;
 import com.objectmethod.ecommerce.dto.CarrelloDto;
+import com.objectmethod.ecommerce.dto.UtenteDto;
 import com.objectmethod.ecommerce.entity.Acquisto;
 import com.objectmethod.ecommerce.mapper.AcquistoMapper;
 import com.objectmethod.ecommerce.mapper.CarrelloMapper;
+import com.objectmethod.ecommerce.mapper.UtenteMapper;
 import com.objectmethod.ecommerce.repository.AcquistoRepository;
 import com.objectmethod.ecommerce.repository.CarrelloRepository;
+import com.objectmethod.ecommerce.repository.UtenteRepository;
 
 @Service
 public class AcquistoService {
@@ -26,7 +29,13 @@ public class AcquistoService {
 	AcquistoRepository acquistoRepo;
 	
 	@Autowired
+	UtenteRepository utenteRepo;
+	
+	@Autowired
 	AcquistoMapper acquistoMapper;
+	
+	@Autowired
+	UtenteMapper utenteMapper;
 	
 	public List<AcquistoDto> findAll(){
 		List<Acquisto> lst = acquistoRepo.findAll();
@@ -53,10 +62,14 @@ public class AcquistoService {
 		
 	}
 	@Transactional
-	public AcquistoDto aggiungiAcquisto(CarrelloDto dto) {
+	public void aggiungiAcquisto(CarrelloDto dto) {
 		acquistoRepo.aggiungiAcquisto(carrelloMapp.toModel(dto).getId(), carrelloMapp.toModel(dto).getPrezzo());
-		return null;
+		carrelloRepo.creaCarrello(dto.getIdUtente());
+		Long idCarrello = carrelloRepo.getLastCarrello(dto.getIdUtente());
+		UtenteDto uDto = utenteMapper.toDto(utenteRepo.getById(dto.getIdUtente()));
+		utenteRepo.setCarrello(idCarrello, uDto.getUsername());
 	}
+	
 	@Transactional
 	public void cancellaAcquisti(Long id) {
 		acquistoRepo.cancellaAcquisti(id);

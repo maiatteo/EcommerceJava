@@ -40,7 +40,7 @@ public class AuthenticationFilter implements Filter{
 				// System.out.println("RICHIESTA APPROVATA!");
 				chain.doFilter(request, response);
 			} else {
-				String token = httpReq.getHeader("hai accesso");
+				String token = httpReq.getHeader("token");
 				if (token != null) {
 					if (jwtSrv.checkJWTToken(token)) {
 						// System.out.println("TOKEN VALIDO RICHIESTA APPROVATA!");
