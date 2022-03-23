@@ -74,7 +74,7 @@ public class ProdottoService {
 		if(id==null) {
 			return "id nullo";
 		}
-		prodottoRepo.deleteById(id);
+		 prodottoRepo.deleteById(id);
 		return "cancellazione avvenuta";
 	}
 	
