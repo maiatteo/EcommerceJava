@@ -73,8 +73,8 @@ public class AcquistoService {
 		for(VMyView record : prodotti) {
 			i.add(record.getPrezzo()*record.getQuantita());
 		}
-		 Double prezzo=i.stream().reduce(0.0, ((a, b) -> a + b));
-		acquistoRepo.aggiungiAcquisto(carrelloMapp.toModel(dto).getId(), prezzo);
+		Double prezzo=i.stream().reduce(0.0, ((a, b) -> a + b));
+		acquistoRepo.aggiungiAcquisto(carrelloMapp.toModel(dto).getId(), prezzo, dto.getIdUtente());
 		carrelloRepo.creaCarrello(dto.getIdUtente());
 		Long idCarrello = carrelloRepo.getLastCarrello(dto.getIdUtente());
 		if(idCarrello != null) {
