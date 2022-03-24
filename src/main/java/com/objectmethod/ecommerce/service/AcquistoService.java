@@ -27,22 +27,22 @@ public class AcquistoService {
 	CarrelloRepository carrelloRepo;
 	@Autowired
 	AcquistoRepository acquistoRepo;
-	
+
 	@Autowired
 	UtenteRepository utenteRepo;
-	
+
 	@Autowired
 	AcquistoMapper acquistoMapper;
-	
+
 	@Autowired
 	UtenteMapper utenteMapper;
-	
+
 	public List<AcquistoDto> findAll(){
 		List<Acquisto> lst = acquistoRepo.findAll();
 		List<AcquistoDto> dto = acquistoMapper.toDto(lst);
 		return dto;
 	}
-	
+
 	public AcquistoDto findById(Long id) {
 		Optional<Acquisto> acquisto = acquistoRepo.findById(id);
 		if(acquisto.isPresent()) {
@@ -52,27 +52,30 @@ public class AcquistoService {
 		else {
 			return null;
 		}
-		
+
 	}
-	
+
 	public List<AcquistoDto> findByIdUtente(Long idUtente){
 		List<Acquisto> lst = acquistoRepo.findByIdUtente(idUtente);
 		List<AcquistoDto> dto = acquistoMapper.toDto(lst);
 		return dto;
-		
+
 	}
 	@Transactional
 	public void aggiungiAcquisto(CarrelloDto dto) {
 		acquistoRepo.aggiungiAcquisto(carrelloMapp.toModel(dto).getId(), carrelloMapp.toModel(dto).getPrezzo());
 		carrelloRepo.creaCarrello(dto.getIdUtente());
 		Long idCarrello = carrelloRepo.getLastCarrello(dto.getIdUtente());
-		UtenteDto uDto = utenteMapper.toDto(utenteRepo.getById(dto.getIdUtente()));
-		utenteRepo.setCarrello(idCarrello, uDto.getUsername());
+		if(idCarrello != null) {
+			UtenteDto uDto = utenteMapper.toDto(utenteRepo.getById(dto.getIdUtente()));
+			if(uDto != null) {
+				utenteRepo.setCarrello(idCarrello, uDto.getUsername());
+			}
+		}
 	}
-	
 	@Transactional
 	public void cancellaAcquisti(Long id) {
 		acquistoRepo.cancellaAcquisti(id);
 	}
-	
+
 }
