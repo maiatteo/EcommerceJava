@@ -7,11 +7,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.objectmethod.ecommerce.dto.CarrelloDto;
 import com.objectmethod.ecommerce.dto.IndirizzoDto;
 import com.objectmethod.ecommerce.dto.UtenteDto;
 import com.objectmethod.ecommerce.dto.utils.UtenteConIndirizzoDto;
 import com.objectmethod.ecommerce.dto.utils.UtenteTokenDto;
 import com.objectmethod.ecommerce.entity.Utente;
+import com.objectmethod.ecommerce.mapper.CarrelloMapper;
 import com.objectmethod.ecommerce.mapper.UtenteMapper;
 import com.objectmethod.ecommerce.repository.UtenteRepository;
 import com.objectmethod.ecommerce.service.jwt.JWTService;
@@ -29,6 +31,9 @@ public class UtenteService {
 	@Autowired
 	UtenteMapper utenteMapper;
 
+	@Autowired
+	CarrelloMapper carrelloMapper;
+	
 	@Autowired
 	UtenteRepository utenteRepo;
 	@Autowired
@@ -58,7 +63,7 @@ public class UtenteService {
 			resp.setError(error);
 			return resp;
 		}
-		if(utenteRepo.getByEmail(entity.getEmail()).isPresent()&&
+		if(utenteRepo.getByEmail(entity.getEmail()).isPresent()||
 				utenteRepo.getByUsername(entity.getUsername()).isPresent()) {
 			error.add("username o email gia esistenti");
 			resp.setError(error);
@@ -72,8 +77,9 @@ public class UtenteService {
 		utenteRepo.registrati(entity.getNome(), entity.getCognome(),
 				entity.getEmail(), entity.getUsername(), entity.getPassword(),creazione.getBody().getId());
 		entity=utenteRepo.getByUsername(entity.getUsername()).get();
-		resp.setBody(utenteMapper.toDto(utenteRepo.getByUsername(entity.getUsername()).get()));
-		carrello.creaCarrello(utenteMapper.toDto(entity));
+		CarrelloDto dtoCarrello = carrello.creaCarrello(utenteMapper.toDto(entity));
+		entity.setCarrello(carrelloMapper.toModel(dtoCarrello));
+		resp.setBody(utenteMapper.toDto(entity));
 		resp.setError(error);
 		return resp;
 	}

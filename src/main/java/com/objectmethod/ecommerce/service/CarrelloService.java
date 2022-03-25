@@ -31,8 +31,8 @@ public class CarrelloService {
 	@Autowired
 	CarrelloRepository carrelloRepo;
 	
-	public CarrelloDto findByIdUtente(Long idUtente) {
-		Optional<Carrello> carrello = carrelloRepo.findById(idUtente);
+	public CarrelloDto findById(Long id) {
+		Optional<Carrello> carrello = carrelloRepo.findById(id);
 		if(carrello.isPresent()) {
 			return carrelloMapper.toDto(carrello.get());
 		}
@@ -49,9 +49,9 @@ public class CarrelloService {
 		//Carrello carrello = new Carrello();
 		//carrello.setUtente(utenteMapper.toModel(uDto));
 		carrelloRepo.creaCarrello(uDto.getId());
-		Long idUtente = carrelloRepo.getLastCarrello(uDto.getId());
-		utenteRepo.setCarrello(idUtente, uDto.getUsername());
-		return findByIdUtente(uDto.getId());
+		Long idCarrello = carrelloRepo.getLastCarrello(uDto.getId());
+		utenteRepo.setCarrello(idCarrello, uDto.getUsername());
+		return findById(idCarrello);
 	}
 
 }
