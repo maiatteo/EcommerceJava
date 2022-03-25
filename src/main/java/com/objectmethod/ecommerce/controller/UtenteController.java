@@ -57,9 +57,4 @@ public class UtenteController {
 		return utenteServ.delect(id);
 	}
 	
-	@PostMapping("carrello")
-	public void carrello(@RequestBody UtenteDto dto) {
-		carrelloService.creaCarrello(dto);
-	}
-	
 }

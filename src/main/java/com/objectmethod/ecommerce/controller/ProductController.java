@@ -47,6 +47,8 @@ public class ProductController {
 		return service.delect(id);
 	}
 	
+	
+	//EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE IL CONTROLLO
 	@PostMapping("/aggiungi/{id}")
 	public String aggiungiAlCarrello(@PathVariable Long id, @RequestBody CarrelloDto carrello, @RequestParam Integer quantita) {
 		service.aggiungiAlCarrello(id, carrello, quantita);

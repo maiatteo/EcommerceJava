@@ -22,7 +22,7 @@ public class NegozioController {
 	public ResponseEntity<?> getOne(@PathVariable("id") Long id) {
 		return negoServ.FindById(id);
 	}
-@GetMapping("/negozi")
+@GetMapping("/all")
 public List<NegozioDto> getAll(){
 	return negoServ.findAll();
 }
