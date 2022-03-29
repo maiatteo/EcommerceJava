@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.objectmethod.ecommerce.ApiGiacenzeResponse;
 import com.objectmethod.ecommerce.dto.utils.ApiBuyBody;
+import com.objectmethod.ecommerce.dto.utils.ProductsResponse;
 import com.objectmethod.ecommerce.dto.utils.StorePruductResponse;
 import com.objectmethod.ecommerce.dto.utils.StoresResponse;
 import com.objectmethod.ecommerce.entity.Siu;
@@ -70,6 +71,14 @@ public class ProvaController {
 		RestTemplate response = new RestTemplate();
 		final String url= urlBase + "/stores" ;
 		StoresResponse result = response.postForObject(url, body, StoresResponse.class);
+		return result;
+	}
+	
+	@PostMapping("/products")
+	public ProductsResponse products(@RequestBody List<String> body) {
+		RestTemplate response = new RestTemplate();
+		final String url= urlBase + "/products" ;
+		ProductsResponse result = response.postForObject(url, body, ProductsResponse.class);
 		return result;
 	}
 }
