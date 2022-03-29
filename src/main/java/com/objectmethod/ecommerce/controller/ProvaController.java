@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import com.objectmethod.ecommerce.ApiGiacenzeResponse;
 import com.objectmethod.ecommerce.dto.utils.ApiBuyBody;
 import com.objectmethod.ecommerce.dto.utils.StorePruductResponse;
+import com.objectmethod.ecommerce.dto.utils.StoresResponse;
 import com.objectmethod.ecommerce.entity.Siu;
 import com.objectmethod.ecommerce.entity.StoreProva;
 
@@ -45,7 +46,7 @@ public class ProvaController {
 	public ApiGiacenzeResponse buy(@RequestBody List<ApiBuyBody> body) {
 		RestTemplate response = new RestTemplate();
 		final String url = urlBase + "/buy";
-		 ApiGiacenzeResponse result = response.postForObject(url, body, ApiGiacenzeResponse.class);
+		ApiGiacenzeResponse result = response.postForObject(url, body, ApiGiacenzeResponse.class);
 		return result;}
 	
 	@GetMapping("/product/{productCode}")
@@ -64,13 +65,12 @@ public class ProvaController {
 	return result;
 	}
 	
-	@GetMapping("/stores")
-	public ResponseEntity<ApiGiacenzeResponse> stores(@RequestBody List<String> body) {
-	RestTemplate response = new RestTemplate();
-	HttpEntity<List<String>> request = new HttpEntity<>(body);
-	final String url= urlBase + "/stores" ;
-	ResponseEntity<ApiGiacenzeResponse> result = response.exchange(url,HttpMethod.GET, request ,ApiGiacenzeResponse.class, body);
-	return result;
+	@PostMapping("/stores")
+	public StoresResponse stores(@RequestBody List<String> body) {
+		RestTemplate response = new RestTemplate();
+		final String url= urlBase + "/stores" ;
+		StoresResponse result = response.postForObject(url, body, StoresResponse.class);
+		return result;
 	}
 }
 
