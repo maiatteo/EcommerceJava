@@ -2,7 +2,6 @@ package com.objectmethod.ecommerce.dto.utils;
 
 import java.util.List;
 
-import com.objectmethod.ecommerce.ApiGiacenzeResponse;
 import com.objectmethod.ecommerce.entity.StoreProva;
 
 import lombok.Data;

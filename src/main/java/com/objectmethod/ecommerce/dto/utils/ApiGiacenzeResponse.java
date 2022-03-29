@@ -1,4 +1,4 @@
-package com.objectmethod.ecommerce;
+package com.objectmethod.ecommerce.dto.utils;
 
 import java.util.List;
 

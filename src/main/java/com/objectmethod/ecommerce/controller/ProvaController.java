@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.objectmethod.ecommerce.ApiGiacenzeResponse;
 import com.objectmethod.ecommerce.dto.utils.ApiBuyBody;
+import com.objectmethod.ecommerce.dto.utils.ApiGiacenzeResponse;
 import com.objectmethod.ecommerce.dto.utils.ProductsResponse;
 import com.objectmethod.ecommerce.dto.utils.StorePruductResponse;
 import com.objectmethod.ecommerce.dto.utils.StoresResponse;
