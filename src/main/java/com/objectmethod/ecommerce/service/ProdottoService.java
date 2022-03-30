@@ -60,8 +60,7 @@ public class ProdottoService {
 		if(prod.getCodice()==null||
 				prod.getNome()==null||
 				prod.getPeso()==null||
-				prod.getPrezzo()==null||
-				prod.getQuantita()==null) {
+				prod.getPrezzo()==null) {
 			error.add("compilare tutti i campi");
 			resp.setError(error);
 		}

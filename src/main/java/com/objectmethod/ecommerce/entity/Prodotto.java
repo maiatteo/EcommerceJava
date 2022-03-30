@@ -28,8 +28,6 @@ public class Prodotto {
 	private String nome;
 	@Column(name="peso")
 	private Double peso;
-	@Column(name="quantita")
-	private Integer quantita;
 	@Column(name="codice")
 	private String codice;
 	@Column(name="prezzo")
