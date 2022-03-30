@@ -84,5 +84,10 @@ public class ProdottoService {
 	public void aggiungiAlCarrello(Long idProdotto, CarrelloDto carrello, Integer quantita) {
 		prodottoRepo.aggiungiAlCarrello(idProdotto, carrelloMapper.toModel(carrello).getId() , quantita);
 	}
+	public List<Prodotto> findByName(String name){
+		name= "%"+name+"%";
+		return prodottoRepo.findByNsme(name);
+		
+	}
 	
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.objectmethod.ecommerce.dto.CarrelloDto;
 import com.objectmethod.ecommerce.dto.ProdottoDto;
+import com.objectmethod.ecommerce.entity.Prodotto;
 import com.objectmethod.ecommerce.service.ProdottoService;
 import com.objectmethod.ecommerce.utils.ResponseWrapper;
 
@@ -53,6 +54,10 @@ public class ProductController {
 	public String aggiungiAlCarrello(@PathVariable Long id, @RequestBody CarrelloDto carrello, @RequestParam Integer quantita) {
 		service.aggiungiAlCarrello(id, carrello, quantita);
 		return "Bella";
+	}
+	public List<Prodotto> findByName(String name){
+		return service.findByName(name);
+		
 	}
 	
 }
