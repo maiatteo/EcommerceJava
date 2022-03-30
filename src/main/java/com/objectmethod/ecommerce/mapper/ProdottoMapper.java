@@ -17,4 +17,6 @@ public abstract class ProdottoMapper {
 	public abstract Prodotto toModel(ProdottoDto dto);
 
 	public abstract List<ProdottoDto> toDto(List<Prodotto> lst);
+	
+	public abstract List<Prodotto> toModel(List<ProdottoDto> dto);
 }

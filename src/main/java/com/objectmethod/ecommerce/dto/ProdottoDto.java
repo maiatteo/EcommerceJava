@@ -1,5 +1,7 @@
 package com.objectmethod.ecommerce.dto;
 
+import java.util.List;
+
 import lombok.Data;
 @Data
 public class ProdottoDto {
@@ -9,6 +11,6 @@ public class ProdottoDto {
 	private Double peso;
 	private String codice;
 	private Double prezzo;
-	private Long idCarrello;
+	private List<Long> idCarrello;
 	
 }

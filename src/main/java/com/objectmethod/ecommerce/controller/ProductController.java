@@ -55,7 +55,9 @@ public class ProductController {
 		service.aggiungiAlCarrello(id, carrello, quantita);
 		return "Bella";
 	}
-	public List<Prodotto> findByName(String name){
+	
+	@GetMapping("/search/{name}")
+	public List<ProdottoDto> findByName(@PathVariable String name){
 		return service.findByName(name);
 		
 	}

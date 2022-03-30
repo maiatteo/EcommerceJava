@@ -17,7 +17,7 @@ public interface ProdottoRepository extends JpaRepository<Prodotto, Long>{
 	@Query(value = "INSERT INTO e_carrelloprodotti(id_prodotti, id_carrello, quantita) VALUES (?1, ?2, ?3)", nativeQuery = true)
 	public void aggiungiAlCarrello(Long idProdotto, Long idCarrello, Integer quantita);
 	
-	@Query(value = "select from e_prodotti where nome like :name", nativeQuery = true)
+	@Query(value = "select * from e_prodotti where nome like %:name%", nativeQuery = true)
 	public List<Prodotto> findByNsme(String name);
 	
 }
