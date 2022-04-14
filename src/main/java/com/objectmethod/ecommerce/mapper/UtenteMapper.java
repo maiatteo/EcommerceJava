@@ -22,9 +22,12 @@ public abstract class UtenteMapper {
 	@Mapping(target= "indirizzoUte.id", source ="idIndirizzo")
 	public abstract Utente toModel(UtenteDto dto);
 
+	
 	@Mapping(target = "password", ignore = true)
 	public abstract List<UtenteDto> toDto(List<Utente> lst);
 	
 	@Mapping(target = "password", ignore = true)
+	@Mapping(target= "idCarrello", source ="entity.carrello.id")
+	@Mapping(target= "idIndirizzo", source ="entity.indirizzoUte.id")
 	public abstract UtenteTokenDto toDto(Utente entity,String token);
 }
