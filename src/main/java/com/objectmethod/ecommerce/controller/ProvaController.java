@@ -7,6 +7,7 @@ import org.springframework.boot.web.reactive.function.client.WebClientCustomizer
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ import com.objectmethod.ecommerce.entity.Siu;
 import com.objectmethod.ecommerce.entity.StoreProva;
 
 import lombok.extern.slf4j.Slf4j;
-
+@CrossOrigin(origins="*")
 @RestController
 @Slf4j
 @RequestMapping("/api/giacenze")
