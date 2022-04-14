@@ -3,6 +3,7 @@ package com.objectmethod.ecommerce.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +21,7 @@ import com.objectmethod.ecommerce.service.ProdottoService;
 import com.objectmethod.ecommerce.utils.ResponseWrapper;
 
 import lombok.extern.slf4j.Slf4j;
-
+@CrossOrigin(origins="*")
 @RestController
 @Slf4j
 @RequestMapping("/api/prodotto")
