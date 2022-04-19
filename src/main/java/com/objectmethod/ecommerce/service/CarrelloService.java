@@ -53,6 +53,10 @@ public class CarrelloService {
 		utenteRepo.setCarrello(idCarrello, uDto.getUsername());
 		return findById(idCarrello);
 	}
+	
+	public Long getLastCarrello(Long idUtente) {
+		return carrelloRepo.getLastCarrello(idUtente);
+	}
 
 
 }
