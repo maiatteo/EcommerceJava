@@ -9,12 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.objectmethod.ecommerce.dto.AcquistoDto;
 import com.objectmethod.ecommerce.dto.CarrelloDto;
+import com.objectmethod.ecommerce.dto.ProdottiCarrelloDto;
 import com.objectmethod.ecommerce.dto.UtenteDto;
 import com.objectmethod.ecommerce.entity.Carrello;
 import com.objectmethod.ecommerce.mapper.CarrelloMapper;
+import com.objectmethod.ecommerce.mapper.ProdottiCarrelloMapper;
 import com.objectmethod.ecommerce.mapper.UtenteMapper;
 import com.objectmethod.ecommerce.repository.CarrelloRepository;
+import com.objectmethod.ecommerce.repository.ProdottiCarrelloRepository;
 import com.objectmethod.ecommerce.repository.UtenteRepository;
 @Service
 public class CarrelloService {
@@ -27,9 +31,14 @@ public class CarrelloService {
 	
 	@Autowired
 	CarrelloMapper carrelloMapper;
+	@Autowired
+	ProdottiCarrelloMapper mapper;
 	
 	@Autowired
 	CarrelloRepository carrelloRepo;
+	
+	@Autowired
+	ProdottiCarrelloRepository prodCarrelloRepo;
 	
 	public CarrelloDto findById(Long id) {
 		Optional<Carrello> carrello = carrelloRepo.findById(id);
@@ -56,6 +65,9 @@ public class CarrelloService {
 	
 	public Long getLastCarrello(Long idUtente) {
 		return carrelloRepo.getLastCarrello(idUtente);
+	}
+	public List<ProdottiCarrelloDto> prodottiDaAcquistare(Long idCarrello){
+		return mapper.toDto(prodCarrelloRepo.getProdottiCarrello(idCarrello));
 	}
 
 
