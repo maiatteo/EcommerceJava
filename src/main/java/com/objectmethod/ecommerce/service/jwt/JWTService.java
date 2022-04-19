@@ -18,6 +18,8 @@ public class JWTService {
 	private static final String EMAIL = "email";
 	private static final String ID = "Id";
 	private static final String Admin = "amministratore";
+	private static final String CARRELLO = "idCarrello";
+	
 	@Value("${JWT_SIUM}")
 	private String secret;
 	
@@ -30,6 +32,7 @@ public class JWTService {
 				.withClaim(ID, user.getId())
 				.withClaim(EMAIL, user.getEmail())
 				.withClaim(Admin, user.getAmministratore())
+				.withClaim(CARRELLO, user.getIdCarrello())
 				.withExpiresAt(tomorrow)
 				.sign(alg);
 
@@ -46,6 +49,7 @@ public class JWTService {
 			Long userId = decoded.getClaim(ID).asLong();
 			String email = decoded.getClaim(EMAIL).asString();
 			Boolean amministratore=decoded.getClaim(Admin).asBoolean();
+			Long idCarrello = decoded.getClaim(CARRELLO).asLong();
 			valid = true;
 		} catch (Exception e) {
 			e.printStackTrace();
